@@ -52,44 +52,34 @@ function MetricCard({ metric, phase }: { metric: Metric; phase: Phase }) {
 
   return (
     <div
-      className="p-6 border transition-all duration-500"
+      className="p-6 border transition-all duration-500 transition-theme"
       style={{
         background: isCritical ? '#110808' : colors.surface,
         borderColor: isCritical ? '#EF444433' : isResolved ? '#22C55E33' : colors.border,
-        transition: 'background-color 0.3s ease, border-color 0.3s ease',
       }}
     >
       <div className="flex items-center justify-between mb-4">
-        <span
-          className="text-xs tracking-[0.1em] uppercase"
-          style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: colors.muted }}
-        >
+        <span className="eyebrow-tight">
           {metric.label}
         </span>
         {isCritical && (
-          <span
-            className="text-[9px] tracking-widest px-2 py-0.5 animate-pulse"
-            style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: '#EF4444', background: '#EF444411', border: '1px solid #EF444433' }}
-          >
+          <span className="badge-error animate-pulse text-[9px] tracking-widest">
             ALERT
           </span>
         )}
         {isResolved && (
-          <span
-            className="text-[9px] tracking-widest px-2 py-0.5"
-            style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: '#22C55E', background: '#22C55E11', border: '1px solid #22C55E33' }}
-          >
+          <span className="badge-success text-[9px] tracking-widest">
             OK
           </span>
         )}
       </div>
       <div
-        className="text-3xl font-bold mb-4 tabular-nums"
-        style={{ fontFamily: 'JetBrains Mono, monospace', color, letterSpacing: '-0.02em' }}
+        className="font-mono text-3xl font-bold mb-4 tabular-nums tracking-[-0.02em]"
+        style={{ color }}
       >
         {metric.format(current)}
       </div>
-      <div className="w-full h-px" style={{ background: colors.elevated }}>
+      <div className="progress-track">
         <div
           className="h-full transition-all duration-300"
           style={{ width: `${Math.min(100, Math.max(0, barPct))}%`, background: color }}
@@ -132,26 +122,16 @@ export default function Problems() {
     <section
       id="problems"
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-center py-32"
-      style={{ background: colors.bg, borderTop: `1px solid ${colors.border}` }}
+      className="relative min-h-screen flex flex-col justify-center py-32 bg-token-bg border-t-token transition-theme"
       aria-labelledby="problems-heading"
     >
       <div className="max-w-7xl mx-auto px-8 md:px-16 w-full">
-        <p
-          className="text-xs tracking-[0.2em] uppercase mb-6"
-          style={{ color: colors.muted, fontFamily: 'Bricolage Grotesque, sans-serif' }}
-        >
+        <p className="eyebrow mb-6">
           03 — Problems
         </p>
         <h2
           id="problems-heading"
-          className="font-extrabold leading-[0.95] mb-6"
-          style={{
-            fontFamily: 'Bricolage Grotesque, sans-serif',
-            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-            letterSpacing: '-0.03em',
-            color: colors.text,
-          }}
+          className="section-heading text-token mb-6"
         >
           Production
           <br />
@@ -160,18 +140,18 @@ export default function Problems() {
 
         <div className="flex items-center gap-3 mb-12">
           <div
-            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-            style={{ background: phaseColors[phase], animation: phase === 'crisis' ? 'pulse 1s infinite' : 'none', transition: 'background-color 0.3s ease' }}
+            className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-theme"
+            style={{ background: phaseColors[phase], animation: phase === 'crisis' ? 'pulse 1s infinite' : 'none' }}
           />
           <p
-            className="text-sm tracking-wide transition-colors duration-700"
-            style={{ fontFamily: 'JetBrains Mono, monospace', color: phaseColors[phase], fontSize: '0.75rem' }}
+            className="font-mono text-[0.75rem] tracking-wide transition-colors duration-700"
+            style={{ color: phaseColors[phase] }}
           >
             {phaseLabels[phase]}
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-px mb-12" style={{ background: colors.elevated }}>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-px mb-12 bg-token-elevated">
           {METRICS.map((m) => (
             <MetricCard key={m.label} metric={m} phase={phase} />
           ))}
@@ -181,13 +161,10 @@ export default function Problems() {
           className="border-l-2 pl-6 py-1 transition-all duration-1000"
           style={{ borderColor: phase === 'resolved' ? '#22C55E' : colors.border, opacity: phase === 'resolved' ? 1 : 0.2 }}
         >
-          <p
-            className="text-xs tracking-[0.15em] uppercase mb-2 font-medium"
-            style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: '#22C55E' }}
-          >
+          <p className="font-display font-medium text-xs tracking-[0.15em] uppercase mb-2 text-token-success">
             Architecture response
           </p>
-          <p className="text-sm leading-relaxed" style={{ color: colors.muted, fontFamily: 'Inter, sans-serif' }}>
+          <p className="body-copy text-sm">
             Circuit breakers tripped. Queue consumers scaled to 24 instances. Read replicas absorbed DB load.
             Cache warmed. Post-mortem scheduled.
           </p>

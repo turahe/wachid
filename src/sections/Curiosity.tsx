@@ -37,8 +37,7 @@ export default function Curiosity() {
     <section
       id="curiosity"
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden py-32"
-      style={{ background: colors.bg, borderTop: `1px solid ${colors.border}` }}
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden py-32 bg-token-bg border-t-token transition-theme"
       aria-labelledby="curiosity-heading"
     >
       {/* Subtle dot grid */}
@@ -54,32 +53,22 @@ export default function Curiosity() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 w-full">
         {/* Chapter marker */}
-        <p
-          className="text-xs tracking-[0.2em] uppercase mb-6"
-          style={{ color: colors.muted, fontFamily: 'Bricolage Grotesque, sans-serif' }}
-        >
+        <p className="eyebrow mb-6">
           01 — Curiosity
         </p>
 
         <h2
           id="curiosity-heading"
-          className="font-extrabold leading-[0.95] mb-16"
-          style={{
-            fontFamily: 'Bricolage Grotesque, sans-serif',
-            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-            letterSpacing: '-0.03em',
-            color: colors.text,
-          }}
+          className="display-heading text-token mb-16"
         >
           Everything starts
           <br />
-          <span style={{ color: colors.muted }}>with a question.</span>
+          <span className="text-token-muted">with a question.</span>
         </h2>
 
         {/* Floating questions field */}
         <div
-          className="relative w-full"
-          style={{ height: 'clamp(280px, 45vh, 440px)' }}
+          className="relative w-full h-[clamp(280px,45vh,440px)]"
           aria-hidden="true"
         >
           {QUESTIONS.map((q, i) => (
@@ -97,15 +86,7 @@ export default function Curiosity() {
               }}
             >
               <span
-                className="whitespace-nowrap px-3 py-1.5 text-xs tracking-wide border"
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  color: colors.textSecondary,
-                  borderColor: colors.border,
-                  background: colors.surface,
-                  fontSize: '0.7rem',
-                  transition: 'background-color 0.3s ease, color 0.3s ease',
-                }}
+                className="whitespace-nowrap px-3 py-1.5 text-xs tracking-wide border font-mono text-token-secondary border-token bg-token-surface transition-theme text-[0.7rem]"
               >
                 {q.text}
               </span>
@@ -117,23 +98,14 @@ export default function Curiosity() {
             style={{ opacity: converged ? 1 : 0, transitionDelay: '0.6s' }}
           >
             <p
-              className="font-extrabold text-center"
-              style={{
-                fontFamily: 'Bricolage Grotesque, sans-serif',
-                fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-                letterSpacing: '-0.025em',
-                color: colors.text,
-              }}
+              className="font-display font-extrabold text-center text-token text-[clamp(1.75rem,4vw,3rem)] leading-none tracking-[-0.025em]"
             >
               Questions become systems.
             </p>
           </div>
         </div>
 
-        <p
-          className="max-w-lg text-lg leading-relaxed mt-16"
-          style={{ color: colors.muted, fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-        >
+        <p className="body-copy max-w-lg text-lg mt-16">
           Engineering begins with genuine curiosity — not about what to build, but about
           how things actually work and why they break.
         </p>

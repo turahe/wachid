@@ -98,7 +98,7 @@ export default function Hero() {
             className="border px-6 py-5"
             style={{ borderColor: colors.border, background: colors.surface }}
           >
-            <div className="flex flex-col gap-1 min-h-[5rem]" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.8125rem', lineHeight: 1.8 }}>
+            <div className="flex flex-col gap-1 min-h-[5rem] font-mono text-[0.8125rem] leading-[1.8]">
               {displayed.map((line, i) => (
                 <div key={i} style={{ color: line.type === 'cmd' ? colors.system : colors.textSecondary }}>
                   {line.text}
@@ -121,11 +121,9 @@ export default function Hero() {
           style={{ opacity: ready ? 1 : 0, transform: ready ? 'none' : 'translateY(20px)' }}
         >
           <h1
-            className="font-extrabold leading-[0.95] mb-8"
+            className="font-extrabold leading-[0.95] mb-8 font-display tracking-[-0.03em]"
             style={{
-              fontFamily: 'Bricolage Grotesque, sans-serif',
               fontSize: 'clamp(3.5rem, 9vw, 7.5rem)',
-              letterSpacing: '-0.03em',
               color: colors.text,
             }}
           >
@@ -138,8 +136,8 @@ export default function Hero() {
 
           <div className="flex items-end gap-16">
             <p
-              className="max-w-xs text-lg leading-relaxed"
-              style={{ color: colors.muted, fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+              className="max-w-xs text-lg leading-relaxed font-body font-light"
+              style={{ color: colors.muted }}
             >
               Distributed systems, backend architecture, AI-assisted engineering.
             </p>
@@ -150,8 +148,7 @@ export default function Hero() {
               style={{ color: colors.textSecondary }}
             >
               <span
-                className="text-xs tracking-[0.15em] uppercase transition-colors group-hover:text-current"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                className="text-xs tracking-[0.15em] uppercase transition-colors group-hover:text-current font-display"
               >
                 Explore the journey
               </span>
@@ -175,8 +172,8 @@ export default function Hero() {
           style={{ background: `linear-gradient(to bottom, transparent, ${colors.border})` }}
         />
         <span
-          className="text-[9px] tracking-[0.3em] uppercase"
-          style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: colors.muted, writingMode: 'vertical-lr' }}
+          className="text-[9px] tracking-[0.3em] uppercase font-display [writing-mode:vertical-lr]"
+          style={{ color: colors.muted }}
         >
           scroll
         </span>

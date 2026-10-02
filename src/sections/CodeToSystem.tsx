@@ -73,8 +73,7 @@ export default function CodeToSystem() {
     <section
       id="codesystem"
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-center py-32"
-      style={{ background: colors.bg, borderTop: `1px solid ${colors.border}` }}
+      className="relative min-h-screen flex flex-col justify-center py-32 bg-token-bg border-t-token transition-theme"
       aria-labelledby="codesystem-heading"
     >
       <div className="max-w-7xl mx-auto px-8 md:px-16 w-full">
@@ -82,30 +81,18 @@ export default function CodeToSystem() {
 
           {/* Left */}
           <div>
-            <p
-              className="text-xs tracking-[0.2em] uppercase mb-6"
-              style={{ color: colors.muted, fontFamily: 'Bricolage Grotesque, sans-serif' }}
-            >
+            <p className="eyebrow mb-6">
               02 — Code to System
             </p>
             <h2
               id="codesystem-heading"
-              className="font-extrabold leading-[0.95] mb-8"
-              style={{
-                fontFamily: 'Bricolage Grotesque, sans-serif',
-                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-                letterSpacing: '-0.03em',
-                color: colors.text,
-              }}
+              className="section-heading text-token mb-8"
             >
               Code is only one
               <br />
               part of the system.
             </h2>
-            <p
-              className="text-lg leading-relaxed mb-12"
-              style={{ color: colors.muted, fontFamily: 'Inter, sans-serif', fontWeight: 300, maxWidth: '28rem' }}
-            >
+            <p className="body-copy text-lg mb-12 max-w-md">
               Every function lives inside a stack that spans from a few lines to an entire
               cloud. Understanding that context changes every decision.
             </p>
@@ -118,19 +105,15 @@ export default function CodeToSystem() {
                   role="tab"
                   aria-selected={i === active}
                   onClick={() => setActive(i)}
-                  className="flex items-center gap-4 py-3 text-left transition-all duration-300 group border-t"
-                  style={{ borderColor: colors.elevated }}
+                  className="flex items-center gap-4 py-3 text-left transition-all duration-300 group border-t border-token-elevated transition-theme"
                 >
                   <span
                     className="w-1 h-1 rounded-full flex-shrink-0 transition-all duration-300"
                     style={{ background: i === active ? l.color : colors.border }}
                   />
                   <span
-                    className="text-xs tracking-[0.1em] uppercase font-medium transition-colors duration-300"
-                    style={{
-                      fontFamily: 'Bricolage Grotesque, sans-serif',
-                      color: i === active ? l.color : colors.muted,
-                    }}
+                    className="font-display text-xs tracking-[0.1em] uppercase font-medium transition-colors duration-300"
+                    style={{ color: i === active ? l.color : colors.muted }}
                   >
                     {l.label}
                   </span>
@@ -139,23 +122,21 @@ export default function CodeToSystem() {
                   )}
                 </button>
               ))}
-              <div className="border-t" style={{ borderColor: colors.elevated }} />
+              <div className="border-t border-token-elevated" />
             </div>
           </div>
 
           {/* Right: code panel */}
           <div
-            className="border"
-            style={{ borderColor: colors.border, background: colors.surface, transition: 'background-color 0.3s ease, color 0.3s ease' }}
+            className="border border-token bg-token-surface transition-theme"
             role="tabpanel"
           >
             <div
-              className="flex items-center justify-between px-6 py-4 border-b"
-              style={{ borderColor: colors.border }}
+              className="flex items-center justify-between px-6 py-4 border-b border-token"
             >
               <span
-                className="text-xs tracking-[0.15em] uppercase font-medium"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: layer.color }}
+                className="font-display text-xs tracking-[0.15em] uppercase font-medium"
+                style={{ color: layer.color }}
               >
                 {layer.label}
               </span>
@@ -177,24 +158,22 @@ export default function CodeToSystem() {
 
             <div className="p-8">
               <pre
-                className="text-sm leading-loose overflow-x-auto"
-                style={{ fontFamily: 'JetBrains Mono, monospace', color: colors.textSecondary, minHeight: '120px' }}
+                className="code-block text-sm leading-loose overflow-x-auto min-h-[120px]"
               >
                 <code style={{ color: layer.color }}>{layer.code}</code>
               </pre>
             </div>
 
             <div
-              className="px-8 py-5 border-t"
-              style={{ borderColor: colors.border }}
+              className="px-8 py-5 border-t border-token"
             >
-              <p className="text-sm leading-relaxed" style={{ color: colors.muted, fontFamily: 'Inter, sans-serif' }}>
+              <p className="body-copy text-sm">
                 {layer.description}
               </p>
             </div>
 
             {/* Progress */}
-            <div className="h-px w-full" style={{ background: colors.elevated }}>
+            <div className="progress-track">
               <div
                 className="h-full transition-all duration-300"
                 style={{ width: `${((active + 1) / LAYERS.length) * 100}%`, background: layer.color }}

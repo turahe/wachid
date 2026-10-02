@@ -12,16 +12,13 @@ import Projects from './sections/Projects';
 import Philosophy from './sections/Philosophy';
 import Contact from './sections/Contact';
 import { ThemeProvider } from './context/ThemeContext';
-import { useThemeColor } from './context/useTheme';
 
 function AppContent() {
-  const colors = useThemeColor();
   return (
-    <div style={{ background: colors.bg, color: colors.text, overflowX: 'hidden', transition: 'background-color 0.3s ease, color 0.3s ease' }}>
+    <div className="bg-token-bg text-token overflow-hidden transition-theme">
       <a
         href="#hero"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:text-xs focus:font-medium"
-        style={{ background: colors.text, color: colors.bg, fontFamily: 'Bricolage Grotesque, sans-serif' }}
+        className="font-display sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:text-xs focus:font-medium focus:bg-token-text focus:text-token-bg"
       >
         Skip to content
       </a>

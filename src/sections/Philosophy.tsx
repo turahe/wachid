@@ -47,22 +47,18 @@ export default function Philosophy() {
     <section
       id="philosophy"
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden"
-      style={{ background: colors.bg, borderTop: `1px solid ${colors.border}` }}
+      className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden bg-token-bg border-t-token"
       aria-labelledby="philosophy-heading"
     >
       <div className="max-w-7xl mx-auto px-8 md:px-16 w-full">
-        <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: colors.muted, fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+        <p className="eyebrow mb-6">
           08 — Engineering Philosophy
         </p>
         <h2
           id="philosophy-heading"
-          className="font-extrabold leading-[0.95] mb-20"
+          className="font-display font-extrabold leading-[0.95] text-token mb-20 tracking-[-0.03em]"
           style={{
-            fontFamily: 'Bricolage Grotesque, sans-serif',
             fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-            letterSpacing: '-0.03em',
-            color: colors.text,
           }}
         >
           What I believe
@@ -70,13 +66,12 @@ export default function Philosophy() {
           about software.
         </h2>
 
-        <div className="flex flex-col border-t" style={{ borderColor: colors.border }}>
+        <div className="flex flex-col border-t border-token">
           {PRINCIPLES.map((p, i) => (
             <article
               key={p.index}
-              className="grid md:grid-cols-[64px_1fr_1fr] gap-0 border-b transition-all duration-700 group"
+              className="grid md:grid-cols-[64px_1fr_1fr] gap-0 border-b border-token transition-all duration-700 group"
               style={{
-                borderColor: '#202020',
                 opacity: visible ? 1 : 0,
                 transform: visible ? 'none' : 'translateY(12px)',
                 transitionDelay: `${i * 0.1}s`,
@@ -84,23 +79,19 @@ export default function Philosophy() {
             >
               {/* Number */}
               <div className="pt-8 hidden md:flex items-start">
-                <span className="text-xs" style={{ fontFamily: 'JetBrains Mono, monospace', color: colors.border }}>
+                <span className="text-xs font-mono" style={{ color: colors.border }}>
                   {p.index}
                 </span>
               </div>
 
               {/* Headline */}
               <div
-                className="py-8 md:pr-12 border-r"
-                style={{ borderColor: colors.border }}
+                className="py-8 md:pr-12 border-r border-token"
               >
                 <h3
-                  className="font-bold leading-snug transition-colors duration-300"
+                  className="font-bold leading-snug transition-colors duration-300 font-display text-token tracking-[-0.02em]"
                   style={{
-                    fontFamily: 'Bricolage Grotesque, sans-serif',
                     fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
-                    letterSpacing: '-0.02em',
-                    color: colors.text,
                   }}
                 >
                   {p.headline}
@@ -110,8 +101,7 @@ export default function Philosophy() {
               {/* Body */}
               <div className="py-8 md:pl-12">
                 <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: colors.muted, fontFamily: 'Inter, sans-serif', fontWeight: 300, maxWidth: '36rem' }}
+                  className="text-sm leading-relaxed font-body text-token-muted font-light max-w-[36rem]"
                 >
                   {p.body}
                 </p>
@@ -127,14 +117,9 @@ export default function Philosophy() {
         aria-hidden="true"
       >
         <p
-          className="font-black uppercase"
+          className="font-black uppercase font-display text-token opacity-[0.02] leading-[0.85] tracking-[-0.04em]"
           style={{
-            fontFamily: 'Bricolage Grotesque, sans-serif',
             fontSize: 'clamp(6rem, 18vw, 18rem)',
-            letterSpacing: '-0.04em',
-            color: colors.text,
-            opacity: 0.02,
-            lineHeight: 0.85,
           }}
         >
           THINK

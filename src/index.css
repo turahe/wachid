@@ -116,3 +116,264 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =========================================================
+ * Utility layer (replaces inline `style={{…}}` attributes
+ * that came from Figma-style handoff workflows).
+ * Components use these semantic classes / Tailwind utilities
+ * instead of ad-hoc inline style blocks.
+ * ========================================================= */
+
+@layer utilities {
+  /* Background + surface colors */
+  .bg-token-bg { background: var(--color-bg); }
+  .bg-token-text { background: var(--color-text); }
+  .bg-token-surface { background: var(--color-surface); }
+  .bg-token-elevated { background: var(--color-elevated); }
+  .bg-token-system-8 { background: color-mix(in srgb, var(--color-system) 8%, transparent); }
+  .bg-token-success-8 { background: color-mix(in srgb, var(--color-success) 8%, transparent); }
+  .bg-token-error-8 { background: color-mix(in srgb, var(--color-error) 8%, transparent); }
+
+  /* Foreground / text colors */
+  .text-token { color: var(--color-text); }
+  .text-token-bg { color: var(--color-bg); }
+  .text-token-secondary { color: var(--color-text-secondary); }
+  .text-token-muted { color: var(--color-muted); }
+  .text-token-system { color: var(--color-system); }
+  .text-token-warning { color: var(--color-warning); }
+  .text-token-error { color: var(--color-error); }
+  .text-token-success { color: var(--color-success); }
+  .text-token-ai { color: var(--color-ai); }
+
+  /* Borders */
+  .border-token { border-color: var(--color-border); }
+  .border-token-elevated { border-color: var(--color-elevated); }
+  .border-token-system-20 { border-color: color-mix(in srgb, var(--color-system) 20%, transparent); }
+  .border-token-success-20 { border-color: color-mix(in srgb, var(--color-success) 20%, transparent); }
+  .border-token-error-20 { border-color: color-mix(in srgb, var(--color-error) 20%, transparent); }
+  .border-t-token { border-top: 1px solid var(--color-border); }
+  .border-b-token { border-bottom: 1px solid var(--color-border); }
+  .border-l-token { border-left: 1px solid var(--color-border); }
+  .border-r-token { border-right: 1px solid var(--color-border); }
+
+  /* Typography families (matches DESIGN.md) */
+  .font-display { font-family: var(--font-display); }
+  .font-body { font-family: var(--font-body); }
+  .font-mono { font-family: var(--font-mono); }
+
+  /* DESIGN.md tracking/overrides */
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+  .eyebrow-tight {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.625rem;
+    color: var(--color-muted);
+  }
+  .code-block {
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+  .display-heading {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+  }
+  .section-heading {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+  .body-copy {
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* Semantic transition token for theme swaps */
+  .transition-theme {
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      fill 0.3s ease,
+      stroke 0.3s ease;
+  }
+  .transition-theme-slow {
+    transition:
+      background-color 0.4s ease,
+      border-color 0.4s ease,
+      color 0.4s ease,
+      transform 0.4s ease,
+      opacity 0.4s ease;
+  }
+
+  /* Semantic badges (Problems status chips, etc.) */
+  .badge-error {
+    font-family: var(--font-display);
+    color: var(--color-error);
+    background: color-mix(in srgb, var(--color-error) 7%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-error) 20%, transparent);
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    line-height: 1;
+  }
+  .badge-success {
+    font-family: var(--font-display);
+    color: var(--color-success);
+    background: color-mix(in srgb, var(--color-success) 7%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-success) 20%, transparent);
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    line-height: 1;
+  }
+
+  /* Progress bar base */
+  .progress-track {
+    width: 100%;
+    height: 1px;
+    background: var(--color-elevated);
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-fill {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    transform-origin: left center;
+  }
+
+  /* Nav scrolled state — translucent surface + backdrop blur */
+  .nav-scrolled {
+    background: color-mix(in srgb, var(--color-bg) 95%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* ThemeToggle button surface */
+  .bg-token-toggle {
+    background: var(--color-elevated);
+  }
+
+  /* =========================================================================
+   * Custom cursor — all state variants driven by data attribute.
+   * Only the runtime translate(x,y) is set inline (per frame).
+   * ========================================================================= */
+  .cursor-base {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .cursor-base.visible {
+    opacity: 1;
+  }
+
+  .cursor-dot {
+    z-index: 9999;
+    transition:
+      opacity 0.3s,
+      width 0.2s,
+      height 0.2s,
+      background 0.2s,
+      border-radius 0.2s;
+    border-radius: 9999px;
+  }
+
+  .cursor-ring {
+    z-index: 9998;
+    transition:
+      opacity 0.3s,
+      width 0.25s,
+      height 0.25s,
+      border-color 0.25s,
+      border-radius 0.25s,
+      opacity 0.25s,
+      transform 0.25s;
+  }
+
+  /* Default state */
+  [data-cursor-state='default'] .cursor-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--color-text);
+  }
+  [data-cursor-state='default'] .cursor-ring {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-muted);
+    border-radius: 9999px;
+  }
+
+  /* Interactive state */
+  [data-cursor-state='interactive'] .cursor-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--color-system);
+  }
+  [data-cursor-state='interactive'] .cursor-ring {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-system);
+    border-radius: 9999px;
+    opacity: 0.6;
+  }
+
+  /* Architecture-node state */
+  [data-cursor-state='architecture-node'] .cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-ai);
+  }
+  [data-cursor-state='architecture-node'] .cursor-ring {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--color-ai);
+    border-radius: 2px;
+    opacity: 0.5;
+    /* rotate handled via inline transform override */
+  }
+
+  /* Project state */
+  [data-cursor-state='project'] .cursor-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--color-text);
+  }
+  [data-cursor-state='project'] .cursor-ring {
+    width: 56px;
+    height: 20px;
+    border: 1px solid var(--color-text-secondary);
+    border-radius: 1px;
+    opacity: 0.4;
+  }
+
+  /* External-link state */
+  [data-cursor-state='external-link'] .cursor-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--color-system);
+  }
+  [data-cursor-state='external-link'] .cursor-ring {
+    width: 36px;
+    height: 36px;
+    border: 1px solid color-mix(in srgb, var(--color-system) 27%, transparent);
+    border-radius: 9999px;
+  }
+}

@@ -80,29 +80,25 @@ export default function AISection() {
     <section
       id="ai"
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-center py-32"
-      style={{ background: colors.bg, borderTop: `1px solid ${colors.border}` }}
+      className="relative min-h-screen flex flex-col justify-center py-32 bg-token-bg border-t-token"
       aria-labelledby="ai-heading"
     >
       <div className="max-w-7xl mx-auto px-8 md:px-16 w-full">
-        <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: colors.muted, fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+        <p className="eyebrow mb-6">
           06 — AI Engineering
         </p>
         <h2
           id="ai-heading"
-          className="font-extrabold leading-[0.95] mb-6"
+          className="font-display font-extrabold leading-[0.95] text-token mb-6 tracking-[-0.03em]"
           style={{
-            fontFamily: 'Bricolage Grotesque, sans-serif',
             fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-            letterSpacing: '-0.03em',
-            color: colors.text,
           }}
         >
           AI as a collaborator,
           <br />
           not magic.
         </h2>
-        <p className="text-lg leading-relaxed mb-16" style={{ color: colors.muted, fontFamily: 'Inter, sans-serif', fontWeight: 300, maxWidth: '34rem' }}>
+        <p className="text-lg leading-relaxed mb-16 font-body text-token-muted font-light max-w-[34rem]">
           AI-assisted development compresses the loop between intent and implementation —
           while keeping a human in control of every decision that matters.
         </p>
@@ -115,8 +111,7 @@ export default function AISection() {
                 key={s.id}
                 role="listitem"
                 onClick={() => setActive(i)}
-                className="flex items-start gap-5 py-5 text-left transition-all duration-300 border-t group"
-                  style={{ borderColor: colors.elevated }}
+                className="flex items-start gap-5 py-5 text-left transition-all duration-300 border-t border-token-elevated group"
                   aria-current={i === active}
                 >
                 <div className="flex flex-col items-center gap-1 mt-1.5 flex-shrink-0">
@@ -127,49 +122,44 @@ export default function AISection() {
                 </div>
                 <div>
                   <p
-                    className="text-xs tracking-[0.1em] uppercase font-semibold mb-1.5 transition-colors"
-                    style={{
-                      fontFamily: 'Bricolage Grotesque, sans-serif',
-                      color: i === active ? s.color : colors.muted,
-                    }}
+                    className="text-xs tracking-[0.1em] uppercase font-semibold mb-1.5 transition-colors font-display"
+                    style={{ color: i === active ? s.color : colors.muted }}
                   >
                     {s.label}
                   </p>
                   <p
-                    className="text-sm leading-relaxed transition-colors"
-                    style={{ fontFamily: 'Inter, sans-serif', color: i === active ? colors.textSecondary : colors.border }}
+                    className="text-sm leading-relaxed transition-colors font-body"
+                    style={{ color: i === active ? colors.textSecondary : colors.border }}
                   >
                     {s.description}
                   </p>
                 </div>
               </button>
             ))}
-            <div className="border-t" style={{ borderColor: colors.elevated }} />
+            <div className="border-t border-token-elevated" />
           </div>
 
           {/* Artifact */}
-          <div className="sticky top-24 border" style={{ borderColor: colors.border, background: colors.surface, transition: 'background-color 0.3s ease, border-color 0.3s ease' }}>
+          <div className="sticky top-24 border bg-token-surface border-token transition-theme">
             <div
-              className="flex items-center gap-3 px-6 py-4 border-b"
-              style={{ borderColor: colors.border }}
+              className="flex items-center gap-3 px-6 py-4 border-b border-token"
             >
               <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: step.color }} />
               <span
-                className="text-[10px] tracking-[0.2em] uppercase font-medium"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: step.color }}
+                className="text-[10px] tracking-[0.2em] uppercase font-medium font-display"
+                style={{ color: step.color }}
               >
                 Agent — {step.label}
               </span>
             </div>
             <div className="p-8">
               <pre
-                className="text-xs leading-relaxed whitespace-pre-wrap"
-                style={{ fontFamily: 'JetBrains Mono, monospace', color: colors.textSecondary, minHeight: '160px' }}
+                className="text-xs leading-relaxed whitespace-pre-wrap code-block min-h-[160px]"
               >
                 <code>{step.artifact}</code>
               </pre>
             </div>
-            <div className="px-6 py-4 border-t flex gap-1" style={{ borderColor: colors.border }}>
+            <div className="px-6 py-4 border-t flex gap-1 border-token">
               {STEPS.map((s, i) => (
                 <div
                   key={s.id}

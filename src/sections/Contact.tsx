@@ -16,17 +16,15 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden"
-      style={{ background: colors.bg, borderTop: `1px solid ${colors.border}` }}
+      className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden bg-token-bg border-t-token"
       aria-labelledby="contact-heading"
     >
       {/* Subtle grid */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none transition-theme"
         style={{
           backgroundImage: `linear-gradient(${colors.surface} 1px, transparent 1px), linear-gradient(90deg, ${colors.surface} 1px, transparent 1px)`,
           backgroundSize: '80px 80px',
-          transition: 'background-color 0.3s ease',
         }}
         aria-hidden="true"
       />
@@ -35,17 +33,14 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-24 items-start">
           {/* Left */}
           <div>
-            <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: colors.muted, fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+            <p className="eyebrow mb-6">
               09 — What's Next
             </p>
             <h2
               id="contact-heading"
-              className="font-extrabold leading-[0.95] mb-8"
+              className="font-display font-extrabold leading-[0.95] text-token mb-8 tracking-[-0.03em]"
               style={{
-                fontFamily: 'Bricolage Grotesque, sans-serif',
                 fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-                letterSpacing: '-0.03em',
-                color: colors.text,
               }}
             >
               Let's build
@@ -54,7 +49,7 @@ export default function Contact() {
               <br />
               meaningful.
             </h2>
-            <p className="text-lg leading-relaxed mb-12" style={{ color: colors.muted, fontFamily: 'Inter, sans-serif', fontWeight: 300, maxWidth: '26rem' }}>
+            <p className="text-lg leading-relaxed mb-12 font-body text-token-muted font-light max-w-[26rem]">
               I'm interested in distributed systems, AI engineering, and hard problems at scale.
             </p>
 
@@ -70,23 +65,20 @@ export default function Contact() {
                   href={href}
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center justify-between py-4 border-b group transition-all duration-300"
-                  style={{ borderColor: colors.border }}
+                  className="flex items-center justify-between py-4 border-b border-token group transition-all duration-300"
                 >
                   <div>
                     <span
-                      className="block text-sm font-semibold mb-0.5 transition-colors group-hover:text-[#00C8E8]"
-                      style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: colors.text }}
+                      className="block text-sm font-semibold mb-0.5 transition-colors group-hover:text-[#00C8E8] font-display text-token"
                     >
                       {label}
                     </span>
-                    <span className="text-xs" style={{ color: colors.muted, fontFamily: 'Inter, sans-serif' }}>
+                    <span className="text-xs font-body text-token-muted">
                       {sub}
                     </span>
                   </div>
                   <span
-                    className="text-sm transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#00C8E8]"
-                    style={{ color: colors.muted }}
+                    className="text-sm transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#00C8E8] text-token-muted"
                   >
                     ↗
                   </span>
@@ -102,8 +94,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="contact-email"
-                    className="block text-xs tracking-[0.1em] uppercase mb-3"
-                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: colors.muted }}
+                    className="block text-xs tracking-[0.1em] uppercase mb-3 font-display text-token-muted"
                   >
                     Email
                   </label>
@@ -114,21 +105,13 @@ export default function Contact() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@company.com"
-                    className="w-full border px-5 py-4 text-sm outline-none transition-all duration-300 focus:border-[#00C8E8]"
-                    style={{
-                      background: colors.surface,
-                      borderColor: colors.border,
-                      fontFamily: 'Inter, sans-serif',
-                      color: colors.text,
-                      transition: 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease',
-                    }}
+                    className="w-full border px-5 py-4 text-sm outline-none transition-all duration-300 focus:border-[#00C8E8] bg-token-surface border-token font-body text-token transition-theme"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="contact-message"
-                    className="block text-xs tracking-[0.1em] uppercase mb-3"
-                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: colors.muted }}
+                    className="block text-xs tracking-[0.1em] uppercase mb-3 font-display text-token-muted"
                   >
                     Message
                   </label>
@@ -139,24 +122,15 @@ export default function Contact() {
                     onChange={(e) => setMessage(e.target.value)}
                     rows={5}
                     placeholder="What are you building?"
-                    className="w-full border px-5 py-4 text-sm outline-none transition-all duration-300 focus:border-[#00C8E8] resize-none"
-                    style={{
-                      background: colors.surface,
-                      borderColor: colors.border,
-                      fontFamily: 'Inter, sans-serif',
-                      color: colors.text,
-                      transition: 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease',
-                    }}
+                    className="w-full border px-5 py-4 text-sm outline-none transition-all duration-300 focus:border-[#00C8E8] resize-none bg-token-surface border-token font-body text-token transition-theme"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-4 text-sm font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:opacity-90"
+                  className="w-full py-4 text-sm font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:opacity-90 font-display"
                   style={{
-                    fontFamily: 'Bricolage Grotesque, sans-serif',
                     background: colors.text,
                     color: colors.bg,
-                    transition: 'background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease',
                   }}
                 >
                   Send Message
@@ -164,18 +138,16 @@ export default function Contact() {
               </form>
             ) : (
               <div
-                className="border p-10"
-                style={{ borderColor: '#22C55E33', background: '#22C55E08', transition: 'background-color 0.3s ease, border-color 0.3s ease' }}
+                className="border p-10 bg-token-success-8 border-token-success-20 transition-theme"
                 role="status"
                 aria-live="polite"
               >
                 <p
-                  className="text-lg font-semibold mb-2"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: '#22C55E' }}
+                  className="text-lg font-semibold mb-2 font-display text-token-success"
                 >
                   Message received.
                 </p>
-                <p className="text-sm" style={{ color: colors.muted, fontFamily: 'Inter, sans-serif' }}>
+                <p className="text-sm font-body text-token-muted">
                   I'll be in touch within 24 hours.
                 </p>
               </div>
@@ -186,16 +158,15 @@ export default function Contact() {
 
       {/* Footer */}
       <footer
-        className="absolute bottom-0 left-0 right-0 px-8 md:px-16 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 border-t"
-        style={{ borderColor: colors.elevated, transition: 'border-color 0.3s ease' }}
+        className="absolute bottom-0 left-0 right-0 px-8 md:px-16 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-token-elevated transition-theme"
       >
-        <span className="text-xs font-semibold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: colors.text }}>
+        <span className="text-xs font-semibold font-display text-token">
           AC
         </span>
-        <span className="text-xs" style={{ fontFamily: 'Inter, sans-serif', color: colors.border }}>
+        <span className="text-xs font-body" style={{ color: colors.border }}>
           © 2026 Nur Wachid — TypeScript · React · Three.js
         </span>
-        <span className="text-xs" style={{ fontFamily: 'Inter, sans-serif', color: colors.border }}>
+        <span className="text-xs font-body" style={{ color: colors.border }}>
           Systems over features.
         </span>
       </footer>

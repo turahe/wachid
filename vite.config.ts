@@ -28,7 +28,7 @@ react(),
       seoPlugin({
         baseUrl: process.env.VITE_PUBLIC_URL,
         siteName:
-          siteConfiguration.title ?? 'Nur Wachid — Senior Software Engineer',
+          siteConfiguration.title ?? 'Alex Chen — Senior Software Engineer',
         description:
           siteConfiguration.description ??
           'Senior software engineer designing and shipping production distributed systems, infrastructure, and AI engineering.',
@@ -45,7 +45,7 @@ react(),
           'cloud architecture',
           'portfolio',
         ],
-        author: 'Nur Wachid',
+        author: 'Alex Chen',
         index: siteConfiguration.robots?.index !== false,
         routes: [{ path: '/', changefreq: 'monthly', priority: 1.0 }],
         disallow: ['/.figma/'],

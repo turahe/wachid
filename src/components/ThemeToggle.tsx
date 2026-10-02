@@ -18,12 +18,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg transition-colors duration-300 hover:opacity-80"
-      style={{
-        background: isDark ? '#111111' : '#F3F3F3',
-        color: isDark ? '#F5F5F5' : '#1A1A1A',
-        border: `1px solid ${isDark ? '#202020' : '#E5E5E5'}`,
-      }}
+      className="p-2 rounded-lg border-token border bg-token-toggle text-token transition-theme hover:opacity-80"
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >

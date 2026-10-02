@@ -81,29 +81,22 @@ export default function Architecture() {
   return (
     <section
       id="architecture"
-      className="relative min-h-screen flex flex-col justify-center py-32"
-      style={{ background: colors.bg, borderTop: `1px solid ${colors.border}` }}
+      className="relative min-h-screen flex flex-col justify-center py-32 bg-token-bg border-t-token transition-theme"
       aria-labelledby="arch-heading"
     >
       <div className="max-w-7xl mx-auto px-8 md:px-16 w-full">
-        <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: colors.muted, fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+        <p className="eyebrow mb-6">
           04 — Architecture
         </p>
         <h2
           id="arch-heading"
-          className="font-extrabold leading-[0.95] mb-6"
-          style={{
-            fontFamily: 'Bricolage Grotesque, sans-serif',
-            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-            letterSpacing: '-0.03em',
-            color: colors.text,
-          }}
+          className="section-heading text-token mb-6"
         >
           Architecture is
           <br />
           controlled complexity.
         </h2>
-        <p className="text-base mb-12" style={{ color: colors.muted, fontFamily: 'Inter, sans-serif', maxWidth: '36rem' }}>
+        <p className="body-copy text-base mb-12 max-w-xl">
           Select any node to inspect its responsibility, tradeoffs, and failure modes.
         </p>
 
@@ -138,7 +131,7 @@ export default function Architecture() {
                   <g
                     key={node.id}
                     transform={`translate(${node.x - 56}, ${node.y})`}
-                    style={{ cursor: 'pointer' }}
+                    className="cursor-pointer"
                     onClick={() => setSelected(isSel ? null : node)}
                     role="button"
                     tabIndex={0}
@@ -158,8 +151,6 @@ export default function Architecture() {
                       textAnchor="middle"
                       fill={isSel ? node.color : colors.textSecondary}
                       fontSize={10}
-                      fontFamily="Bricolage Grotesque, sans-serif"
-                      letterSpacing={0.5}
                       fontWeight={isSel ? 600 : 400}
                     >
                       {node.label.toUpperCase()}
@@ -172,25 +163,22 @@ export default function Architecture() {
 
           {/* Inspector */}
           <div
-            className="border min-h-[320px]"
-            style={{ borderColor: colors.border, background: colors.surface, transition: 'background-color 0.3s ease, border-color 0.3s ease' }}
+            className="border border-token bg-token-surface transition-theme min-h-[320px]"
           >
             {selected ? (
               <>
                 <div
-                  className="px-6 py-4 border-b flex items-center justify-between"
-                  style={{ borderColor: colors.border }}
+                  className="px-6 py-4 border-b border-token flex items-center justify-between"
                 >
                   <span
-                    className="text-xs tracking-[0.15em] uppercase font-semibold"
-                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: selected.color }}
+                    className="font-display text-xs tracking-[0.15em] uppercase font-semibold"
+                    style={{ color: selected.color }}
                   >
                     {selected.label}
                   </span>
                   <button
                     onClick={() => setSelected(null)}
-                    className="text-xs transition-colors hover:text-[#F5F5F5]"
-                    style={{ color: colors.muted }}
+                    className="text-token-muted text-xs transition-colors hover:text-token"
                     aria-label="Close inspector"
                   >
                     ✕
@@ -204,13 +192,10 @@ export default function Architecture() {
                     { label: 'Implementation', value: selected.tech },
                   ].map(({ label, value }) => (
                     <div key={label}>
-                      <p
-                        className="text-[10px] tracking-[0.15em] uppercase mb-2"
-                        style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: colors.muted }}
-                      >
+                      <p className="eyebrow-tight mb-2">
                         {label}
                       </p>
-                      <p className="text-sm leading-relaxed" style={{ color: colors.textSecondary, fontFamily: 'Inter, sans-serif' }}>
+                      <p className="body-copy text-sm">
                         {value}
                       </p>
                     </div>
@@ -220,8 +205,8 @@ export default function Architecture() {
             ) : (
               <div className="flex items-center justify-center h-full min-h-[320px]">
                 <p
-                  className="text-xs tracking-[0.2em] text-center"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif', color: colors.border }}
+                  className="font-display text-xs tracking-[0.2em] text-center"
+                  style={{ color: colors.border }}
                 >
                   SELECT A NODE
                   <br />
