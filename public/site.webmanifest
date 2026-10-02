@@ -1,0 +1,20 @@
+{
+  "name": "Nur Wachid — Senior Software Engineer",
+  "short_name": "Nur Wachid",
+  "description": "Portfolio of a senior engineer building production distributed systems, infrastructure, and AI engineering.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}
